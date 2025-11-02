@@ -33,4 +33,7 @@ interface PokemonDao {
 
     @Query("SELECT * FROM cached_pokemon WHERE lastFetchedAt < :timestamp")
     suspend fun getStaleCache(timestamp: Long): List<CachedPokemon>
+
+    @Query("SELECT * FROM cached_pokemon WHERE id IN (:pokemonIds)")
+    suspend fun getPokemonsByIds(pokemonIds: List<Long>): List<CachedPokemon>
 }

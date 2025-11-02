@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Sort
+import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,6 +23,7 @@ import com.uvg.mypokedex.ui.features.search.SearchToolsDialog
 fun HomeScreen(
     viewModel: HomeViewModel,
     onPokemonClick: (Int) -> Unit,
+    onTradeClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -61,6 +63,12 @@ fun HomeScreen(
                         Icon(
                             imageVector = Icons.Default.Sort,
                             contentDescription = "Sort"
+                        )
+                    }
+                    IconButton(onClick = onTradeClick) {
+                        Icon(
+                            imageVector = Icons.Default.SwapHoriz,
+                            contentDescription = "Trade"
                         )
                     }
                 },
